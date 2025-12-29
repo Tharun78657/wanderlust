@@ -1,0 +1,14 @@
+<% layout('layouts/boilerplate') -%>
+
+<h1>Edit Your Booking</h1>
+
+<form action="/bookings/<%= booking._id %>?_method=PUT" method="POST">
+  <label>Check In:
+    <input type="date" name="checkIn" value="<%= booking.checkIn.toISOString().split('T')[0] %>" required>
+  </label>
+  <label>Check Out:
+    <input type="date" name="checkOut" value="<%= booking.checkOut.toISOString().split('T')[0] %>" required>
+  </label>
+  <button type="submit">Update Booking</button>
+</form>
+

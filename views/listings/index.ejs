@@ -1,0 +1,112 @@
+<% layout('layouts/boilerplate') -%>
+
+
+    <body>
+
+<style>
+    #filters {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .filter {
+        text-align: center;
+        margin-right: 2rem;
+        margin-top: 2rem;
+        margin-left: 2rem;
+        opacity: 0.7;
+    }
+
+    .filter:hover {
+        opacity: 1;
+        cursor: pointer;
+    }
+    .filter p {
+        font-size: 0.8rem;
+    }
+</style>
+  
+<!-- <div id="filters">
+    <div class="filter <%= activeFilter === 'Trending' ? 'active' : '' %>" onclick="applyFilter('Trending')">
+      <div><i class="fa-solid fa-fire"></i></div> 
+      <p>Trending</p>
+    </div>
+    <div class="filter <%= activeFilter === 'Rooms' ? 'active' : '' %>" onclick="applyFilter('Rooms')">
+      <div><i class="fa-solid fa-bed"></i></div> 
+      <p>Rooms</p>
+    </div>
+    <div class="filter <%= activeFilter === 'Iconic Cities' ? 'active' : '' %>" onclick="applyFilter('Iconic Cities')">
+      <div><i class="fa-solid fa-mountain-city"></i></div> 
+      <p>Iconic Cities</p>
+    </div>
+    <div class="filter <%= activeFilter === 'Mountains' ? 'active' : '' %>" onclick="applyFilter('Mountains')">
+      <div><i class="fa-solid fa-mountain"></i></div> 
+      <p>Mountains</p>
+    </div>
+    <div class="filter <%= activeFilter === 'Castles' ? 'active' : '' %>" onclick="applyFilter('Castles')">
+      <div><i class="fa-brands fa-fort-awesome"></i></div> 
+      <p>Castles</p>
+    </div>
+    <div class="filter <%= activeFilter === 'Amazing Pools' ? 'active' : '' %>" onclick="applyFilter('Amazing Pools')">
+      <div><i class="fa-solid fa-person-swimming"></i></div> 
+      <p>Amazing Pools</p>
+    </div>
+    <div class="filter <%= activeFilter === 'Camping' ? 'active' : '' %>" onclick="applyFilter('Camping')">
+      <div><i class="fa-solid fa-campground"></i></div> 
+      <p>Camping</p>
+    </div>
+    <div class="filter <%= activeFilter === 'Farms' ? 'active' : '' %>" onclick="applyFilter('Farms')">
+      <div><i class="fa-solid fa-cow"></i></div> 
+      <p>Farms</p>
+    </div>
+    <div class="filter <%= activeFilter === 'Beach Front' ? 'active' : '' %>" onclick="applyFilter('Beach Front')">
+      <div><i class="fa-solid fa-umbrella-beach"></i></div> 
+      <p>Beach Front</p>
+    </div>
+  </div>
+  
+  
+  <script>
+    function applyFilter(filter) {
+      // Get the current search query (if any)
+      const searchQuery = '<%= typeof searchQuery !== "undefined" ? searchQuery : "" %>';
+      
+      // Build the URL with the search and filter query parameters
+      const newUrl = `/listings?search=${searchQuery}&filter=${filter}`;
+      
+      // Redirect to the new URL to trigger the route with the filter
+      window.location.href = newUrl;
+    }
+  </script>
+   -->
+
+        <ul>
+
+            
+            <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+
+
+                <% for (let listing of allListings ) { %>
+                    <a href="/listings/<%= listing._id %>" class="listing-link">
+                        <div class="card col listing-card">
+                            <img src="<%= listing.image%>" class="card-img-top" alt="<%= listing.title%>">
+                            <div class="card-img-overlay"></div>
+                            <div class="card-body">
+
+                                <p class="card-text">
+                                    <b>
+                                        <%= listing.title%>
+                                    </b>
+                                </p>
+                                <p>
+                                    Rs.<%= listing.price%> / night
+                                </p>
+
+                            </div>
+                        </div>
+                    </a>
+                    <% } %>
+            </div>
+        </ul>
+
+    </body>

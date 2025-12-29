@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/listings"><i class="fa-solid fa-compass">Wanderlust</i></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav" >
+                <a class="nav-link" href="/listings">Explore</a>
+
+            </div>
+            <div class="navbar-nav ms-auto">
+                <form class="d-flex" role="search" action="/listings" method="GET" >
+                    <input type="text"
+                    name="search"
+                    class="form-control"
+                    placeholder="Search by location or title"
+                    value="<%= typeof searchQuery !== 'undefined' ? searchQuery : '' %>"/>
+                    <button class="btn btn-search" type="submit">Search</button>
+                  </form>
+            </div>
+            <style>
+                .nav-link {
+                    margin-left: 2rem;
+                }
+                .navbar-brand {
+                    margin-left: 2rem;
+                }
+
+                .btn-search {
+                    background-color: #fe424d;
+                    color: #fff;
+                }
+                .btn-search:hovver {
+                    background-color: #fe424d;
+                    color: #fff;
+                }
+
+            </style>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/listings/new">Add New Listing</a>
+                <% if (currUser) { %>
+                    <a class="nav-link" href="/bookings">My Bookings</a>
+                <% } %>
+                <% if(!currUser) { %>
+                <a class="nav-link" href="/signup"><b>Sign up</b></a>
+                <a class="nav-link" href="/login"><b>Log in</b></a>
+                <% } %>
+                <% if(currUser) { %>
+                <a class="nav-link" href="/logout"><b>Log out</b></a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</nav>
